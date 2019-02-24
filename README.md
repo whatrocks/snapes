@@ -7,6 +7,7 @@
 - [ ] cache needs to persist through restarts
 - [ ] testing / linting / load testing
 - [ ] deployment / docker process
+- [ ] logging
 
 
 ### Notes
