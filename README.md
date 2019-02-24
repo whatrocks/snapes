@@ -5,3 +5,11 @@
     - [ ] checks cache first before scraping
     - [ ] updates cache
 - [ ] cache needs to persist through restarts
+- [ ] testing / linting / load testing
+- [ ] deployment / docker process
+
+
+### Notes
+
+Add this to bash profile
+`export PIPENV_VENV_IN_PROJECT=1`
