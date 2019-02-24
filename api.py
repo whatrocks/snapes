@@ -1,8 +1,9 @@
 import responder
+from redis import Redis, RedisError
 from managers.scraper import get_text_from_url
 
-# TODO: fix this for production or dev
-api = responder.API()
+api = responder.API(debug=True)
+redis = Redis(host="redis", port=6379)
 
 @api.route("/")
 def hello_world(req, resp):
@@ -10,7 +11,16 @@ def hello_world(req, resp):
 
 @api.route('/snippet')
 def snippets(req, resp):
-    resp.text = get_text_from_url("https://en.wikipedia.org/wiki/Cheese")
+    # TODO: make sure both params are there
+    # url = req.params['url']
+    # max_age = req.params['max_age']
+    # text = get_text_from_url(url)
+    # redis.delete(url)
+    # redis.hmset(url, text)
+    # redis.expire(url, max_age)
+    resp.text = "hi"
 
 if __name__ == "__main__":
-    api.run()
+    # api.run(debug=True, port=80)
+    options = {'debug':True}
+    api.serve(**options)

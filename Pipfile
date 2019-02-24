@@ -10,6 +10,7 @@ pytest = "*"
 responder = "*"
 beautifulsoup4 = "*"
 requests = "*"
+redis = "*"
 
 [requires]
 python_version = "3.7"
