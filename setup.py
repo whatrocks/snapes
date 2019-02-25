@@ -22,7 +22,7 @@ setup(
     extras_require={
         "dev": [
             "pytest",
-            "ujson"
+            "ujson",
         ]
     },
     entry_points={}

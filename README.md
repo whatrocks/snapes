@@ -5,7 +5,7 @@
     - [x] checks cache first before scraping
     - [x] updates cache
 - [x] cache needs to persist through restarts
-- [ ] fix unit testing
+- [x] fix unit testing
 - [ ] add wsgi / gunicorn ... maybe nginx?
 - [ ] deployment / docker process
 - [ ] logging
@@ -35,4 +35,8 @@ Open redis-cli on redis container
 
 ## run tests
 
-```pip3 install --no-cache-dir -e ".[dev]"```
+```
+virtualenv -p python3 /.venv
+pip3 install --no-cache-dir -e ".[dev]"
+pytest
+```

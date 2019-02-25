@@ -1,7 +1,9 @@
 import pytest
 import logging
+import requests
 from snapes import create_app
 from ujson import loads
+from unittest.mock import Mock, patch
 
 logger = logging.getLogger(__name__)
 
@@ -52,16 +54,20 @@ def test_get_snippet_from_cache(client):
         })
     response_dict = loads(response.data)
     snippet = response_dict.get('snippet')
-    print("S: ", snippet)
     assert response.status_code == 200
     assert snippet == 'I am the Holloway website!'
 
+# @patch('snapes.scraper.requests.get')
 def test_get_snippet_not_in_cache(client):
-    response = client.get('/snippet',
-        query_string={
-            'url': 'https://www.atari.com',
-            'max_age': 100
-        })
-    response_dict = loads(response.data)
-    snippet = response_dict.get('snippet')
-    assert response.status_code == 200
+    with patch('snapes.managers.scraper.requests.get') as mock_get:
+        mock_get.return_value.ok = True
+        mock_get.return_value.text = '<p>Video games from the 1980s are the best</p>'
+        response = client.get('/snippet',
+            query_string={
+                'url': 'https://www.atari.com',
+                'max_age': 100
+            })
+        response_dict = loads(response.data)
+        snippet = response_dict.get('snippet')
+        assert response.status_code == 200
+        assert snippet == 'Video games from the 1980s are the best...'
