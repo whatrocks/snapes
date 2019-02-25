@@ -5,7 +5,10 @@ services:
     ports:
       - "5000:5000"
     volumes:
-     - .:/app
+      - .:/app
+    environment:
+      - FLASK_APP=snapes
+      - FLASK_ENV=development
   redis:
     image: "redis:alpine"
     ports:

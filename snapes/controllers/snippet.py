@@ -1,7 +1,7 @@
 import logging
 from flask import Blueprint, jsonify, request
-from managers.scraper import get_text_from_url
-from cache import redis
+from snapes.managers.scraper import get_text_from_url
+from snapes.cache import redis
 
 logger = logging.getLogger(__name__)
 snippet = Blueprint('snippet', __name__)

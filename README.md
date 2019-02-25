@@ -6,17 +6,12 @@
     - [x] updates cache
 - [x] cache needs to persist through restarts
 - [ ] fix unit testing
-- [ ] deployment / docker process
 - [ ] add wsgi / gunicorn ... maybe nginx?
+- [ ] deployment / docker process
 - [ ] logging
 - [ ] backup the redis RDB file to s3 once a day / hour?
 - [ ] load testing
 - [ ] linting
-
-### Notes
-
-Add this to bash profile
-`export PIPENV_VENV_IN_PROJECT=1`
 
 ## Local set up
 

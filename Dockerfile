@@ -1,4 +1,8 @@
-FROM kennethreitz/pipenv
+FROM python:3.7-alpine
+
 COPY . /app
 WORKDIR /app
-CMD ["python3", "snapes/app.py"]
+
+RUN pip install --no-cache-dir -e .
+
+CMD ["flask", "run", "-h" ,"0.0.0.0"]
