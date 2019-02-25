@@ -18,9 +18,12 @@ setup(
         "redis",
         "flask"
     ],
-    tests_require=[
-        "pytest"
-    ],
-    extras_require={},
+    tests_require=[],
+    extras_require={
+        "dev": [
+            "pytest",
+            "ujson"
+        ]
+    },
     entry_points={}
 )

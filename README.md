@@ -32,3 +32,7 @@ Kill a container and its memory
 
 Open redis-cli on redis container
 `docker-compose exec redis redis-cli`
+
+## run tests
+
+```pip3 install --no-cache-dir -e ".[dev]"```

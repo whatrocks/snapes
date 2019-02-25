@@ -1,10 +1,13 @@
 import logging
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, current_app as app
 from snapes.managers.scraper import get_text_from_url
-from snapes.cache import redis
 
 logger = logging.getLogger(__name__)
 snippet = Blueprint('snippet', __name__)
+
+@snippet.route('/')
+def index():
+    return "10 points from Gryfinndor!"
 
 @snippet.route('/snippet')
 def snippets():
@@ -14,12 +17,12 @@ def snippets():
         logger.error("Missing required parameters.")
         return 'Missing required parameter.', 400
 
-    if redis.exists(url):
-        snippet = redis.get(url)
+    if app.redis.exists(url):
+        snippet = app.redis.get(url)
         return jsonify({ 'snippet': snippet })
 
     text = get_text_from_url(url)
-    redis.delete(url)
-    redis.set(url, text)
-    redis.expire(url, max_age)
+    app.redis.delete(url)
+    app.redis.set(url, text)
+    app.redis.expire(url, max_age)
     return jsonify({ 'snippet': text })
