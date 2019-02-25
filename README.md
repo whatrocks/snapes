@@ -5,8 +5,9 @@
     - [x] checks cache first before scraping
     - [x] updates cache
 - [x] cache needs to persist through restarts
-- [x] fix unit testing
-- [ ] add wsgi / gunicorn ... maybe nginx?
+- [x] unit tests
+- [x] add wsgi
+- [ ] add nginx?
 - [ ] deployment / docker process
 - [ ] logging
 - [ ] backup the redis RDB file to s3 once a day / hour?
@@ -37,6 +38,7 @@ Open redis-cli on redis container
 
 ```
 virtualenv -p python3 /.venv
+source /.venv/bin/activate
 pip3 install --no-cache-dir -e ".[dev]"
 pytest
 ```

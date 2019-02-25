@@ -57,7 +57,6 @@ def test_get_snippet_from_cache(client):
     assert response.status_code == 200
     assert snippet == 'I am the Holloway website!'
 
-# @patch('snapes.scraper.requests.get')
 def test_get_snippet_not_in_cache(client):
     with patch('snapes.managers.scraper.requests.get') as mock_get:
         mock_get.return_value.ok = True

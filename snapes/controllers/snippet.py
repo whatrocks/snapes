@@ -18,9 +18,11 @@ def snippets():
         return 'Missing required parameter.', 400
 
     if app.redis.exists(url):
+        logger.info('Found %s in cache!', url)
         snippet = app.redis.get(url)
         return jsonify({ 'snippet': snippet })
 
+    logger.info("Fetching snippet from the internet...")
     text = get_text_from_url(url)
     app.redis.delete(url)
     app.redis.set(url, text)

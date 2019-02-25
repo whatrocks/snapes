@@ -6,6 +6,8 @@ services:
       - "5000:5000"
     volumes:
       - .:/app
+    links:
+      - redis
     environment:
       - FLASK_APP=snapes
       - FLASK_ENV=development
