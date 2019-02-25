@@ -1,20 +1,22 @@
 # snapes
 
-- [ ] `/snippet` route with two params (url and max_age)
-    - [ ] returns extracted text
-    - [ ] checks cache first before scraping
-    - [ ] updates cache
-- [ ] cache needs to persist through restarts
-- [ ] testing / linting / load testing
+- [x] `/snippet` route with two params (url and max_age)
+    - [x] returns extracted text
+    - [x] checks cache first before scraping
+    - [x] updates cache
+- [x] cache needs to persist through restarts
+- [ ] fix unit testing
 - [ ] deployment / docker process
+- [ ] add wsgi / gunicorn ... maybe nginx?
 - [ ] logging
-
+- [ ] backup the redis RDB file to s3 once a day / hour?
+- [ ] load testing
+- [ ] linting
 
 ### Notes
 
 Add this to bash profile
 `export PIPENV_VENV_IN_PROJECT=1`
-
 
 ## Local set up
 
