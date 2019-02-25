@@ -21,5 +21,4 @@ def get_text_from_url(url: str) -> str:
     visible_texts = list(filter(tag_visible, texts))
     scraped = " ".join(t.strip() for t in visible_texts)
     split = scraped.split(' ')[:50]
-    # print(split)
     return " ".join(split) + "..."
