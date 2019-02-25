@@ -7,38 +7,48 @@
 - [x] cache needs to persist through restarts
 - [x] unit tests
 - [x] add wsgi
+- [x] linting
+- [x] makefile
+- [ ] documenation
 - [ ] add nginx?
 - [ ] deployment / docker process
 - [ ] logging
 - [ ] backup the redis RDB file to s3 once a day / hour?
 - [ ] load testing
-- [ ] linting
 
 ## Local set up
 
-Build images
-`docker-compose build`
-
-Start the containers
-`docker-compose up -d`
+Build and run the containers
+```bash
+make build-and-run
+```
 
 Restart a container (e.g. redis)
-`docker-compose restart redis`
+```bash
+docker-compose restart redis
+```
 
 Stop a container (without killing everything)
-`docker-compose stop redis`
+```bash
+docker-compose stop redis
+```
 
 Kill a container and its memory
-`docker-compose down redis`
+```bash
+docker-compose down redis
+```
 
 Open redis-cli on redis container
-`docker-compose exec redis redis-cli`
-
-## run tests
-
+```bash
+docker-compose exec redis redis-cli
+keys *
 ```
+
+## Run tests
+
+```bash
 virtualenv -p python3 /.venv
 source /.venv/bin/activate
-pip3 install --no-cache-dir -e ".[dev]"
-pytest
+make build-local
+make check-all
 ```

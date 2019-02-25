@@ -22,6 +22,8 @@ setup(
     tests_require=[],
     extras_require={
         "dev": [
+            "flake8",
+            "mypy",
             "pytest==4.3.0",
             "ujson==1.35",
         ]

@@ -5,9 +5,11 @@ from snapes.managers.scraper import get_text_from_url
 logger = logging.getLogger(__name__)
 snippet = Blueprint('snippet', __name__)
 
+
 @snippet.route('/')
 def index():
     return "10 points from Gryfinndor!"
+
 
 @snippet.route('/snippet')
 def snippets():
@@ -20,11 +22,11 @@ def snippets():
     if app.redis.exists(url):
         logger.info('Found %s in cache!', url)
         snippet = app.redis.get(url)
-        return jsonify({ 'snippet': snippet })
+        return jsonify({'snippet': snippet})
 
     logger.info("Fetching snippet from the internet...")
     text = get_text_from_url(url)
     app.redis.delete(url)
     app.redis.set(url, text)
     app.redis.expire(url, max_age)
-    return jsonify({ 'snippet': text })
+    return jsonify({'snippet': text})

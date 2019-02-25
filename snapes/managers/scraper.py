@@ -1,12 +1,13 @@
 from bs4 import BeautifulSoup
-from bs4.element import Comment
 import requests
+
 
 # TODO: fix this! for example, anchor tags not showing
 def tag_visible(element):
     if element.parent.name not in ['p', 'b', 'i']:
         return False
     return True
+
 
 def get_text_from_url(url: str) -> str:
     page = requests.get(url).text
