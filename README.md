@@ -4,7 +4,9 @@ Snapes is a RESTful snippets service that returns a short text snippet from a gi
 
 ## Local development
 
-Snapes uses `docker-compose` locally to build and run its microservices (currently Flask and Redis). To build and run the containers locally:
+Snapes uses `docker-compose` locally to build and run its microservices (currently Flask for API layer and Redis for caching). You need to have Docker running locally - you can [download Docker Desktop here](https://www.docker.com/products/docker-desktop).
+
+To build and run the Snapes containers locally:
 
 ```bash
 make build-and-run
@@ -18,7 +20,9 @@ $ curl -G "http://localhost:5000/snippet" \
   --data-urlencode "max_age=3600"
 ```
 
-Or you can use the provided utility script:
+As you can see, you need to provide a `url` and `max_age` as parameters. Snapes uses the `max_age` to determine the length of time a given snippet will persist in the Redis cache.
+
+Alternatively to curl, you can use the provided utility script:
 
 ```bash
 ./scripts/curl.sh
