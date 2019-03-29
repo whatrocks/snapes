@@ -2,7 +2,7 @@
 class FakeRedis():
     def __init__(self):
         self.data = {
-            'https://www.holloway.com': 'I am the Holloway website!'
+            'https://www.charlieharrington.com': 'I am Charlie Harrington blog'
         }
 
     def set(self, key: str, val: str):
